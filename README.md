@@ -4,4 +4,4 @@
 
 - You can add products from the product page and then view your order in the cart section
 - You can add reviews on the reviews page!
--Enjoy the visit to the website!
+- Enjoy the visit to the website!
