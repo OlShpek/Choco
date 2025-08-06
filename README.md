@@ -1,4 +1,4 @@
-#Choco
+# Choco
 
 A website for the chocolate making company!
 
