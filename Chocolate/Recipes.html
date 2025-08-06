@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta name="description" content="The best chocolate in the UK">
+        <meta name="keywords" content="chocolate, elite, posh, delicious, rich">
+    
+        <style type="text/css">
+             #main_container
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: #fff2cc;
+            }
+            button
+            {
+                background-color: #fff2cc;
+                border: none;
+                font-family: Castellar;
+                font-size: 22px;
+            }
+            #about_us, #reviews, #cart
+            {
+                flex-grow: 1;
+            }
+            #products, #recipes
+            {
+                flex-grow: 2;
+            }
+
+            #logo
+            {
+                flex-grow: 3;
+            }
+            div
+            {
+                text-align: center;
+            }
+            
+
+            body
+            {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            .rectangle1
+            {
+                display: flex;
+                flex-direction: row;
+                margin: 10px;
+            }
+
+            #rectangle1
+            {
+                background-image: url("pictures/mainBack.png");
+                border: #D4AF37;
+                border-style: solid;
+                text-align: left;
+                height: 100%px;
+                width: 100%;
+                font-family: Garamond;
+                font-size: large;
+            }
+
+            .Chocolate 
+            {
+
+            }
+
+            #Chocolate 
+            {
+                border: #fff2cc;
+                border-style: solid;
+                height: 208px;
+                width: 450px;
+                margin-top: 40px;
+            }
+
+            .rectangle2
+            {
+                display: flex;
+                flex-direction: row;
+                margin: 10px;
+            }
+
+            #rectangle2
+            {
+                background-image: url("pictures/mainBack.png");
+                border: #D4AF37;
+                border-style: solid;
+                text-align: left;
+                height: 100%px;
+                width: 100%;
+                font-family: Garamond;
+                font-size: large;
+            }
+            
+            .Chocolate_Cake 
+            {
+
+            }
+
+            #Chocolate_Cake 
+            {
+                border: #fff2cc;
+                border-style: solid;
+                height: 205px;
+                width: 450px;
+                margin-top: 40px;
+
+            }
+
+
+        </style>
+        <script src="connective.js"></script>
+    </head>
+
+    <body style="background-color: #4D2206;">
+
+        <!--
+            this coutainer is for the header. the elements in this incolves images and texts for the buttons.
+        -->
+        <div id="main_container">
+            <div id="products">
+                <button onclick="redirect('products')">Products</button>
+            </div>
+            <div id="recipes">
+                <button onclick="redirect('Recipes')">Recipes</button>
+            </div>
+            <div id="logo">
+                <button onclick="redirect('home_page')"><img alt="Logo" src="pictures/Logo.png"></button> 
+            </div>
+            <div id="about_us">
+                <button onclick="redirect('about us')">About Us</button>
+            </div>
+            <div id="reviews">
+                <button onclick="redirect('review')">Reviews</button>
+            </div>
+            <div id="cart">
+                <button onclick="redirect('cart')"><img alt="Cart" src="pictures/cart.png"></button>
+            </div>
+        </div>
+
+        <div class="rectangle1">
+            
+            <div class="rectangle1" id="rectangle1"><p> 
+                <u>Ingredient</u><br> <br>
+                ¼ cup virgin coconut oil<br>
+                ¼ cup cocoa powder unsweetened, Dutch-processed<br>
+                2 tablespoons honey<br>
+                1 ounce almonds roasted, unsalted, coarsely chopped in the food processor</p>
+            </div>
+            <div class="rectangle1" id="rectangle1"><p> 
+                <u>Instructions</u><br> <br>
+                Place the coconut oil in a medium microwave-safe bowl. 
+                If it's solid, microwave it for 20-30 seconds to melt it.<br>
+                Sift the cocoa powder into the melted coconut oil. Use a small rubber spatula to combine.<br>
+                Mix in the honey.<br>
+                Mix in the chopped almonds.<br>
+                Use a spoon to transfer the mixture into a candy silicone mold placed on a tray.
+                Freeze the mixture for 20-30 minutes until completely set. <br>
+                Gently release the chocolate pieces from the mold.<br>
+                Enjoy immediately, or refrigerate overnight for improved texture.
+                </p> 
+            </div>
+            <div class="Chocolate" id="Chocolate"><img src="pictures/Chocolate for Recipe page.png" alt="Chocolate"> 
+            </div>
+            </div>
+            
+            <div class="rectangle2">
+
+                <!--
+                    <u> - used for underlining the text.
+                    <br> - used for breaking the text into the next line.
+                -->
+            <div class="rectangle2" id="rectangle2"><p> 
+                <u>Ingredient</u><br> <br>
+                4 oz self raising flour. <br>
+                4oz soft margarine
+                4oz castor sugar <br>
+                2 eggs <br>
+                1 level tsp baking powder <br>
+                1 heaped tablespoon cocoa <br>
+                2 tablespoons of boiling waters
+                </p>
+            </div>
+
+            <div class="rectangle2" id="rectangle2"> <p> 
+                <u>Instructions</u><br> <br>
+                Melt the cocoa with the water. <br>
+                Shove everything in a mixer/food processor and mix until combined. <br>
+                Pour into two 6” round cake tins – greased and lined (or something similar) <br>
+                Pop in a preheated oven, 170 degrees for 20 minutes or until brown (when you lightly press with your 
+                finger they are firm but bounce back a bit). <br>
+                Take out, cool for a couple of minutes before turning out onto a wire rack to cool completely.<br>
+                You can then either sandwich them together with cream or make up some icing with icing sugar, 
+                a tsp of cocoa powder and a tsp of hot water. Ice the top too and decorate.
+                </p>
+
+                <!--
+                    src - used to place an image.
+                    alt - used as a text of what is image is (used for people with disability to help them to know the 
+                    picture).
+                    This countainer is for Chocolate Cake picture.
+                -->
+            </div>
+            <div class="Chocolate_Cake" id="Chocolate_Cake"><img src="pictures/chocolate resbary cake .png" 
+                alt="chocolate resbary cake"></div>
+            </div>
+            
+            </div>
+    </body>
+</html>

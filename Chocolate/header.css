@@ -1,0 +1,40 @@
+            #header
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: #fff2cc;
+            }
+            .header_b
+            {
+                background-color: #fff2cc;
+                border: none;
+                font-family: Castellar;
+                font-size: 22px;
+                color: #774432;
+            }
+            #about_us, #reviews, #cart
+            {
+                flex-grow: 1;
+            }
+            #products, #recipes
+            {
+                flex-grow: 2;
+            }
+
+            #logo
+            {
+                flex-grow: 3;
+            }
+            div
+            {
+                text-align: center;
+            }
+            body
+            {
+                margin: 0px;
+                padding: 0px;
+                background-color: #4d2206;
+            }
+            

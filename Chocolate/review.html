@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="The best chocolate in the UK">
+    <meta name="keywords" content="chocolate, elite, posh, delicious, rich">
+    
+	<title></title>
+	<link rel="stylesheet" href="header.css">
+	<style>
+		#main_container, #coms
+		{
+			color: #664D00;
+			font-family: Garamond;
+			font-size: 20px;
+		}
+		.buttons > img
+		{
+			height: 25px;
+			width: 25px;
+		}
+		.comment
+		{
+			display: flex;
+			flex-direction: row;
+		}
+		.comment > div, .thank
+		{
+			border: solid;
+			border-color: #d4af37;
+			background-image: url("pictures/mainBack.png");
+			margin: 50px;
+			margin-top: 25px;
+			margin-bottom: 25px;
+		}
+		#name_inp, #com_inp
+		{
+			background: none;
+			border: none;
+			color: #664D00;
+			font-family: Garamond;
+			font-size: 20px;
+			text-align: center;
+		}
+		#com_inp
+		{
+			width: 90%;
+			height: 90%;
+		}
+		#coms
+		{
+			border: solid;
+			border-color: #d4af37;
+			background-image: url("pictures/mainBack.png");
+			margin-right: 50px;
+			padding: 20px;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			text-align: center;
+		}
+		.initials
+		{
+			width: 30%;
+		}
+		.cont
+		{
+			width: 100%;
+		}
+		#coms_div
+		{
+			display: flex;
+			justify-content: flex-end;
+		}
+	</style>
+</head>
+<body onload="retrieve_from_local()">
+		<!-- <a target="_blank" href="https://icons8.com/icon/104/star">Star</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+		<a target="_blank" href="https://icons8.com/icon/7856/star">Star</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>-->
+		<div id="header">
+            <div id="products">
+                <button class="header_b" onclick="redirect_with_save('products')">Products</button>
+            </div>
+            <div id="recipes">
+                <button class="header_b" onclick="redirect_with_save('Recipes')">Recipes</button>
+            </div>
+            <div id="logo">
+                <button class="header_b" onclick="redirect_with_save('home_page')"><img src="pictures/Logo.png"></button>
+            </div>
+            <div id="about_us">
+                <button class="header_b" onclick="redirect_with_save('about us')">About Us</button>
+            </div>
+            <div id="reviews">
+                <button class="header_b" onclick="redirect_with_save('review')">Reviews</button>
+            </div>
+            <div id="cart" onclick="redirect_with_save('cart')">
+                <button class="header_b"><img alt="Cart" src="pictures/cart.png"></button>
+            </div>
+        </div>
+     	<div id="main_container">
+     		<div class="comment">
+     			<div class="initials">
+     				<p>John Doe</p>
+     				<div class="buttons">
+     					<!-- Represent stars-->
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     				</div>
+     			</div>
+     			<div class="cont">
+     				<p>Some the best chocolate I have ever tasted maybe ever!</p>
+     			</div>
+     		</div>
+
+     		<div class="comment">
+     			<div class="initials">
+     				<p>Jane Doe</p>
+     				<div class="buttons">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/star.png">
+     				</div>
+     			</div>
+     			<div class="cont">
+     				<p>Even despite the price the chocolate is more than worth the time and money with their swift delivery!</p>
+     			</div>
+     		</div>
+
+
+     		<div class="comment" id="create_comm">
+     			<div class="initials">
+     				<input type="text" value="Please Enter Your Name" id="name_inp"></input>
+     				<div class="buttons" id="rank">
+     					<img onclick="set_buttons(1)" src="pictures/star.png">
+     					<img onclick="set_buttons(2)" src="pictures/star.png">
+     					<img onclick="set_buttons(3)" src="pictures/star.png">
+     					<img onclick="set_buttons(4)" src="pictures/star.png">
+     					<img onclick="set_buttons(5)" src="pictures/star.png">
+     				</div>
+     			</div>
+     			<div class="cont">
+     				<input type="text" id="com_inp" value="Please add a review based upon our products and or services!"></input>
+     			</div>
+     		</div>
+     		<div id="coms_div"><button id="coms" onclick="validation()">Submit</button></div>
+     		<div class="thank"><p>Thank you for your reviews!</p></div>
+     	</div>
+
+     	<template id="templ_comm">
+     		<div class="comment">
+     			<div class="initials">
+     				<p id="templ_in">John Doe</p>
+     				<div class="buttons" id="templ_but">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     					<img src="pictures/fstar.png">
+     				</div>
+     			</div>
+     			<div class="cont" id="templ_cont">
+     				<p>Some the best chocolate I have ever tasted maybe ever!</p>
+     			</div>
+     		</div>
+     	</template>
+     	<script src="connective.js"></script>
+     	<script type="text/javascript">
+     		let rank = 0;
+     		//temporary storage of comments
+     		let comments = [];
+
+     		//sets buttons on the screen for each comment (the stars)
+     		function set_buttons(num)
+     		{
+     			rank = num;
+     			let st = document.getElementById("rank");
+ 				set_images(st, num);
+     		}
+
+     		//Checks whether all fields are entered correctly (i.e they are not emptty)
+     		function validation()
+     		{
+     			//gets the fields
+     			let com_inp = document.getElementById("com_inp");
+     			let name_inp = document.getElementById("name_inp");
+     			//checkig on being empty
+     			if (rank == 0 || com_inp.value == "" || name_inp.value == "")
+     			{
+     				alert("Please fill all the fields");
+     				return;
+     			}
+     			//adding comments to the temporary storage
+     			comments.push({name: name_inp.value, comm: com_inp.value, rank: rank});
+     			add_comment(com_inp.value, name_inp.value, rank);
+     			alert("The comment has been added successfully");
+				redirect_with_save("review")
+     		}
+
+     		function add_comment(com_inp, name_inp, r)
+     		{
+
+     			//console.log(name_inp.value);
+				//physically adding the comment to the page
+     			let comm = document.getElementById("templ_comm").content.cloneNode(true);
+     			let crcomm = document.getElementById("create_comm");
+     			let parent = document.getElementById("main_container");
+     			parent.insertBefore(comm, crcomm);
+
+     			//setting element's values and emptying ids
+     			document.getElementById("templ_in").innerHTML = name_inp;
+     			document.getElementById("templ_in").id="";
+     			document.getElementById("templ_cont").innerHTML = com_inp;
+     			document.getElementById("templ_cont").id="";
+     			let bs = document.getElementById("templ_but");
+     			bs.id = "";
+     			set_images(bs, r);
+     		}
+
+     		//setting the rank of the page (1, 2,3 stars etc)
+     		function set_images(st, r)
+     		{
+     			for (let i = 0; i < st.children.length; i++)
+     			{
+     				//the choice between an empty star and the filled star
+     				st.children.item(i).src="pictures/star.png";
+     				if (i < r)
+     				{
+     					st.children.item(i).src = "pictures/fstar.png";
+     				}
+     			}
+     		}
+
+			// saves comments to the local storage
+     		function save_to_storage()
+     		{
+     			for (let i = 0; i < comments.length; i++)
+     			{
+     				localStorage.setItem("comm" + i, JSON.stringify(comments[i]));
+     			}
+     		}
+
+     		function redirect_with_save(str)
+     		{
+     			save_to_storage();
+     			redirect(str);
+     			//window.location.href = str + ".html";
+     		}
+
+     		//loads the commentfrom the comments array
+     		function load()
+     		{
+     			for (let i = 0; i < comments.length; i++)
+     			{
+     				//alert("a");
+     				add_comment(comments[i].comm, comments[i].name, comments[i].rank);
+     			}
+     		}
+     		// retrieves data from local storage to the comments array
+     		function retrieve_from_local()
+     		{
+     			//localStorage.clear();
+     			let keys = Object.keys(localStorage);
+     			for (let i = 0; i < keys.length; i++)
+     			{
+     				if (keys[i].substring(0, 4) == "comm")
+     				{
+     					//alert(localStorage.getItem(keys[i]));
+     					comments.push(JSON.parse(localStorage.getItem(keys[i])));
+     				}
+     			}
+     			load();
+     		}
+
+     	</script>
+</body>
+</html>

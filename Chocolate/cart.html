@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="The best chocolate in the UK">
+    <meta name="keywords" content="chocolate, elite, posh, delicious, rich">
+
+	<link rel="stylesheet" href="header.css">
+	<title></title>
+	<style>
+		#product_area
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+		}
+		#code_area
+		{
+			flex-grow: 10;
+		}
+		#check_out
+		{
+			flex-grow: 1;
+			background-image: url("pictures/biggerBack.png");
+			margin: 10px;
+			border-style: solid;
+			border-color: #d4af37;
+		}
+		textarea
+		{
+			background-color: #fff2cc;
+			border-style: solid;
+			border-color: #d4af37;
+		}
+		textarea, p
+		{
+			font-family: Garamond;
+			font-size: 12pt;
+			color: #664D00;
+		}
+		p
+		{
+			margin-bottom: 0px;
+		}
+
+		.code_block
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			margin: 10px;
+		}
+
+		.prod_im
+		{
+			margin-bottom: 0px;
+			border-style: solid;
+			border-color: #d4af37;
+		}
+
+		.controls
+		{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: baseline;
+			margin-top: 0px;
+		}
+		.controls > button
+		{
+			background-color: #4d2206;
+			border: none;
+			font-weight: bolder;
+			font-size: 22pt;
+			color: #fff2cc;
+		}
+		.controls > p 
+		{
+			background-color: #fff2cc;
+			border-style: solid;
+			border-color: #d4af37;
+			font-size: 14pt;
+			font-family: Garamond;
+			margin-top: 0px;
+			padding: 5px;
+			margin-right: 0px;
+		}
+
+		.content_area > p
+		{
+			text-align: left;
+			font-size: 22pt;
+			border-style: solid;
+			border-color: #d4af37;
+			background-color: #fff2cc;
+			padding: 20px;
+		}
+
+		.content_area
+		{
+			width:50%;
+		}
+
+		#buttons > button
+		{
+			border-style: solid;
+			border-color: #d4af37;
+			background-color: #fff2cc;
+			font-size: 14pt;
+			font-family: Garamond;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+		<div id="header">
+            <div id="products">
+                <button class="header_b" onclick="redirect('products')">Products</button>
+            </div>
+            <div id="recipes">
+                <button class="header_b" onclick="redirect('Recipes')">Recipes</button>
+            </div>
+            <div id="logo">
+                <button class="header_b" onclick="redirect('home_page')"><img alt="Logo" src="pictures/Logo.png"></button>
+            </div>
+            <div id="about_us">
+                <button class="header_b" onclick="redirect('about us')">About Us</button>
+            </div>
+            <div id="reviews">
+                <button class="header_b" onclick="redirect('review')">Reviews</button>
+            </div>
+            <div id="cart" onclick="redirect('cart')">
+                <button class="header_b"><img alt="Cart" src="pictures/cart.png"></button>
+            </div>
+        </div>
+
+
+        <div id="product_area">
+        	<div id="code_area">
+        		<template id="prod_templ">
+        		<div class="code_block">
+        			<div class="control_div">
+        				<img class="prod_im" src="pictures/dreamCh.png">
+        				<div class="controls">
+        					<button class="plus">+</button>
+        					<p class="dnum">gkjg</p>
+        					<button class="minus">-</button>
+        				</div>
+        			</div>
+        			<div class="content_area">
+        				<p class="dname">fjhkg</p>
+        				<p class="dprice">uyfgkuhjkl</p>
+        			</div>
+        		</div>
+        	</template>
+        	</div>
+
+
+        	<div id="check_out">
+        		<p>Please Enter Your Name</p>
+        		<textarea id="nme"></textarea>
+        		<p>Please Enter email address</p>
+        		<textarea id="em"></textarea>
+        		<p>Please Enter the Card Number</p>
+        		<textarea id="card_n"></textarea>
+        		<p>Please Enter the CVV code</p>
+        		<textarea id="cvv"></textarea>
+        		<p>Please Enter the Expiery Date of a card</p>
+        		<textarea id="date">MM/YY</textarea>
+        		<p>Your total</p>
+        		<p id="total">Total: £0.00</p>
+        		<div id="buttons">
+        			<button onclick="clear()">Cancel</button>
+        			<button onclick="submit()">Submit</button>
+        		</div>
+        	</div>
+        </div>
+
+        	<script src="main.js"></script>
+			<script type="text/javascript">
+				//retrievs the memoory and loads the system
+				function main()
+				{
+					//console.log(document.querySelectorAll("div > div#code_area > template > div"));
+					retrieve_from_local();
+					//clear();
+					console.log(products);
+					sys.load();
+				}
+
+				//redirects with saving data
+				function redirect(str)
+				{
+					let href = "";
+		            let new_href = window.location.href.split('/');
+		            new_href[new_href.length - 1] = str + ".html";
+		            for (let i = 0; i < new_href.length; i++)
+		            {
+		                href += (new_href[i] + '/');
+		            }
+		            href = href.slice(0, -1);
+		            console.log(href);
+		            href = save_to_local(href);
+		            window.location.href = href;
+				}
+
+
+				//basic valdation that checks that all characters are between 0 and 9
+				function check_cn(str)
+				{
+					for (let i = 0; i <str.length; i++)
+					{
+						if (str[i] > '9' || str[i] < '0')
+						{
+							return false;
+						}
+					}
+					return true;
+				}
+
+				function is_digit(d)
+				{
+					return '0' <= d && d <= '9';
+				}
+
+				function check_date(str)
+				{
+					if (str.length != 5)
+					{
+						return false;
+					}
+					if (str[0] != '0' && str[0] != '1')
+					{
+						return false;
+					}
+					let sec_and_f = (str[0] == '0' && is_digit(str[1])) || (str[0] == '1' && (str[1] == '0' || str[1] == '1' || str[1] == '2'));
+					if (!sec_and_f || str[2] != '/' || !is_digit(str[3]) || !is_digit(str[4]))
+					{
+						return false;
+					}
+					return true;
+				}
+				//activates when the submit button is pressed. Activates validation
+				function submit()
+				{
+					let nme = document.getElementById("nme").value;
+					let em = document.getElementById("em").value;
+					let date = document.getElementById("date").value;
+					let cn = document.getElementById("card_n").value;
+					let cvv = document.getElementById("cvv").value;
+					console.log(cn);
+					console.log(cvv);
+					if (nme == "" || em == "" || date == "" || cn == "" || cvv == "")
+					{
+						alert("Some fields are empty, please fill them and try again");
+						return;
+					}
+					if (!check_cn(cn) || !check_cn(cvv))
+					{
+						alert("Data in the card number or cvv code field is incorrect, please try again");
+						return;
+					}
+					if (!check_date(date))
+					{
+						alert("Please enter the correct date");
+						return;
+					}
+					alert("Thank you for your purchase!");
+					//clear();
+				}
+
+				main();
+			</script>
+</body>
+</html>

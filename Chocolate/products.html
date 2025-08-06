@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="The best chocolate in the UK">
+    <meta name="keywords" content="chocolate, elite, posh, delicious, rich">
+    
+	<title></title>
+    <link rel="stylesheet" href="header.css">
+    <style type="text/css">
+        body
+        {
+            background-color: #4d2206;
+            padding: 0px;
+            margin: 0px;
+            margin-bottom: 10px;
+        }
+        #products
+        {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        #products > div > p, #mheader > p, #products > div > button
+        {
+            font-size: 24px;
+            font-family: Garamond;
+            color: #664D00;
+            background-image: url("pictures/mainBack.png");
+            padding: 10px;
+            margin: 5px;
+        }
+        #mheader > p
+        {
+            border-style: solid;
+            border-color: #d4af37;
+        }
+        #products > div
+        {
+            background-color: #fff2cc;
+            border-style: solid;
+            border-color: #ebdbab;
+            width: 200px;
+        }
+
+        #products > div > img 
+        {
+            width: 150px;
+            height: 200px;
+        }
+
+        #products > div > button
+        {
+            border-color: #d4af37;
+        }
+        
+
+        #mheader
+        {
+            margin: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+    </script>
+</head>
+<body>
+        <div id="header">
+            <div id="products">
+                <button class="header_b" onclick="redirect('products')">Products</button>
+            </div>
+            <div id="recipes">
+                <button class="header_b" onclick="redirect('Recipes')">Recipes</button>
+            </div>
+            <div id="logo">
+                <button class="header_b" onclick="redirect('home_page')"><img alt="Logo" src="pictures/Logo.png"></button>
+            </div>
+            <div id="about_us">
+                <button class="header_b" onclick="redirect('about us')">About Us</button>
+            </div>
+            <div id="reviews">
+                <button class="header_b" onclick="redirect('review')">Reviews</button>
+            </div>
+            <div id="cart" onclick="redirect('cart')">
+                <button class="header_b"><img alt="cart" src="pictures/cart.png"></button>
+            </div>
+        </div>
+        <br>
+        <div id="main_content">
+            <div id="mheader">
+                <p>Each product we make is carefully crafted by our team of highly trained bakers across the country to deliver the best possible experience directly to your home.</p>
+            </div>
+            <br>
+            <br>
+            <div id="products">
+                <div>
+                    <p>Dream chocolate</p>
+                    <img src="pictures/dreamCh.png" alt="Dream chocolate">
+                    <p>£24.99</p>
+                    <button onclick="add_item_p('Dream chocolate', 'pictures/dreamCh.png', 24.99)">Add to cart</button>
+                </div>
+                <div>
+                    <p>Choco cake</p>
+                    <img src="pictures/chocoCake.png" alt="Choco Cake">
+                    <p>£55.50</p>
+                    <button onclick="add_item_p('Choco cake', 'pictures/chocoCake.png', 55.50)">Add to cart</button>
+                </div>
+                <div>
+                    <p>Tower delight</p>
+                    <img src="pictures/towerDelight.png" alt="Tower Delight">
+                    <p>£35.00</p>
+                    <button onclick="add_item_p('Tower delight', 'pictures/towerDelight.png', 35.00)">Add to cart</button>
+                </div>
+                <div>
+                    <p>Pick-n-choose</p>
+                    <img src="pictures/pickNChoose.png" alt="Pick-n-choose">
+                    <p>£15.99</p>
+                    <button onclick="add_item_p('Pick-n-choose', 'pictures/pickNChoose.png', 15.99)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <script src="main.js">
+            
+        </script>
+        <script type="text/javascript">
+            //an intermidiate function between the add_item in main.js and the HTML page itself
+            function add_item_p(nme, img, price)
+            {
+                let p = new Product(nme, price, img);
+                add_item(p);
+                console.log(products);
+            }
+
+            //redirects with saving data
+            function redirect(str)
+            {
+                let href = "";
+                let new_href = window.location.href.split('/');
+                new_href[new_href.length - 1] = str + ".html";
+                for (let i = 0; i < new_href.length; i++)
+                {
+                    href += (new_href[i] + '/');
+                }
+                href = href.slice(0, -1);
+                console.log(href);
+                href = save_to_local(href);
+                window.location.href = href;
+            }
+            retrieve_from_local();
+        </script>
+</body>
+</html>

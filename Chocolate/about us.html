@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+      <head>
+      <meta name="description" content="The best chocolate in the UK">
+        <meta name="keywords" content="chocolate, elite, posh, delicious, rich">
+        <style type="text/css">
+            #main_container
+            {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: #fff2cc;
+            }
+            button
+            {
+                background-color: #fff2cc;
+                border: none;
+                font-family: Castellar;
+                font-size: 22px;
+            }
+            #about_us, #reviews, #cart
+            {
+                flex-grow: 1;
+            }
+            #products, #recipes
+            {
+                flex-grow: 2;
+            }
+
+            #logo
+            {
+                flex-grow: 3;
+            }
+            div
+            {
+                text-align: center;
+            }
+            
+
+            body
+            {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            p
+            {
+                font-size: 22px;
+                font-family: Garamond;
+                color: #662d00;
+            }
+
+            .Rectangle1
+            {
+                display: flex;
+                flex-direction: row;
+                margin: 50px;
+            }
+
+            #Rectangle1
+            {
+                background-image: url("pictures/mainBack.png");
+                border: #D4AF37;
+                border-style: solid;
+
+            }
+
+            #factory
+
+            {
+                height: 100%;
+            }
+
+            .Rectangle2
+            {
+                display: flex;
+                flex-direction: row;
+                margin: 50px;
+            }
+
+            #Rectangle2
+            {
+                background-image: url("pictures/mainBack.png");
+                border: #D4AF37;
+                border-style: solid;
+            }
+
+            #Cheif
+
+            {
+                height: 100%;
+            }
+
+
+            .rectangle3 
+            {
+                display: flex;
+                flex-direction: row;
+                margin: 50px;
+            }
+            
+            #rectangle3
+            {
+                background-image: url("pictures/mainBack.png");
+                border: #D4AF37;
+                border-style: solid;
+                width: 100%;
+                height: 100%;
+            }
+
+            #email_logo 
+            {
+                background-image: url("pictures/mainBack.png");
+                border: #D4AF37;
+                border-style: solid;
+
+            }
+
+
+        </style>
+        <script src="connective.js"></script>
+        </head>
+
+        <body style="background-color: #4D2206;">
+             <!---
+        display flex - turns on flex
+        flex-direction - allowing to set driection to either coloums or rows
+        justify-content - allow you to put spaces between the flex boxes. allowing you
+        to also position the box either to the left or right.
+        Boarder styles - used to property sets the line style for all four sides of an element's border.
+        Width and height - used to identify the size of an object. -->
+
+            <div id="main_container">
+                <div id="products">
+                    <button onclick="redirect('products')">Products</button>
+                </div>
+                <div id="recipes">
+                    <button onclick="redirect('Recipes')">Recipes</button>
+                </div>
+                <div id="logo">
+                    <button onclick="redirect('home_page')"><img alt="Logo" src="pictures/Logo.png"></button> 
+                </div>
+                <div id="about_us">
+                    <button onclick="redirect('about us')">About Us</button>
+                </div>
+                <div id="reviews">
+                    <button onclick="redirect('review')">Reviews</button>
+                </div>
+                <div id="cart">
+                    <button onclick="redirect('cart')"><img alt="Cart" src="pictures/cart.png"></button>
+                </div>
+            </div>
+
+                <!---        
+        Div ID - used as a container to store one elemnts.
+        Dive Class - used to add multiple eliments.-->
+
+
+            <div class="rectangle1">
+
+                <div class="Rectangle" id="Rectangle1"><p>This is Choc O Late one of the luxurious chocolate company. 
+                    This company was created in 1906 with amazing rich taste chocolate. We have built 
+                    up our companieswebsite from then to now 2023 with all the updates to 
+                    help the costumers being keep entertained buying chocolate from us.</p></div>
+                    <div class="factory" id="factory"><img src="pictures/factory pic.png" alt="Factory"></div>
+            </div>
+                 <div class="Rectangle" id="Rectangle2"><p>This is Choc O Late, one of the luxurious chocolate company. 
+                            We have a qualified team who controls and manage our fine range of 
+                            products. They are trained to look for any threat or any error which
+                            occurs within the baking process.</p></div>
+                <div class="Cheif" id="Cheif"> <img src="pictures/Cheif picture.png" alt="Cheif"></div>
+            </div>
+                                                
+            <div>
+
+            <div class="Rectangle" id="rectangle3"><p>If you have any questions or issues regarding our products 
+                please contact us via social media or Email.</p></div>
+                        </div>
+
+        </body>
+        </html>
+            
+    
